@@ -1,0 +1,53 @@
+/* General button styles */
+button {
+    width: 150px;
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px; /* Vertically center text */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Start button specific styles */
+#start-button {
+    position: absolute;
+    left: 50%; /* Center horizontally */
+    bottom: 70px; /* 70px from the bottom of the container */
+    transform: translateX(-50%); /* Adjust to center it */
+}
+
+/* Home button specific styles */
+.home {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Make it round */
+    position: absolute; /* Ensure it is positioned */
+    top: 20px; /* 20px from the top */
+    left: 20px; /* 20px from the left */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FontAwesome icon styling inside home button */
+.home i {
+    font-size: 24px; /* Size of the icon */
+}

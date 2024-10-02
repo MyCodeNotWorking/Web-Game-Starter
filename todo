@@ -1,0 +1,24 @@
+- create the home menu:
+- start-button
+- title
+- background
+
+- create main game:
+- create player and bot
+- create ball with collision
+- draw net and score
+- add a scene reset
+
+--
+WGS:
+add scene reset, test libraries, add parallax background, 
+make so every object in container is positioned relative, 
+remove display flex, check if chatgpt style.css was different
+#ui-elements-container > * {
+    position: relative;
+}
+
+margin instead of left top
+remove absolute from button style (or should I?)
+canvas horizontally test
+move player away from public

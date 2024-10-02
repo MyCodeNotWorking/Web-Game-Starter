@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game-Title</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="game-ui.css" rel="stylesheet" type="text/css" />
+
+  <!-- a library to use icons in your game -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <!-- load media files here -->
+  <!-- images -->
+
+  <!-- 
+  example:
+  <img class="media_file" id="image_name" src="./media_files/images/image_name.png">
+  -->
+
+  <!-- font -->
+
+  <!-- 
+  example:
+  <img class="media_file" id="font_name" src="./media_files/fonts/font_name.png">
+  -->
+
+  <!-- audios -->
+
+  <!-- 
+  example:
+  <audio class="media_file" id="audio_name" src="./media_files/audios/audio_name.png">
+  -->
+
+  <!-- videos -->
+
+  <!-- 
+  example:
+  <video class="media_file" id="video_name" src="./media_files/video/video_name.png">
+  -->
+
+
+  <div id="game-container">
+    <canvas id="canvas" width="720" height="1280"></canvas>
+
+    <div id="ui-elements-container">
+
+      <!-- example for creating a ui element in the title-screen -->
+      <div id="title-screen">
+        <button class="home"><i class="fas fa-home"></i></button>
+        <button id="start-button">Start</button>
+      </div>
+
+      <!-- main-game ui container -->
+      <div id="main-game" class="hidden">
+        <button class="home"><i class="fas fa-home"></i></button>
+      </div>
+    </div>
+  <div>
+
+  <div id="loading">Loading ...</div>
+
+  <!-- import libs -->
+  <script src="./libs/keyboard.js"></script>
+  <script src="./libs/random.js" type="module"></script>
+  <script src="./libs/touch.js" type="module"></script>
+   
+  <script src="./main.js" type="module"></script>
+  
+</body>
+
+</html>
+ 
