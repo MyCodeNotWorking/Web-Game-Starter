@@ -30,7 +30,7 @@ button:active {
 #start-button {
     position: absolute;
     left: 50%; /* Center horizontally */
-    bottom: 70px; /* 70px from the bottom of the container */
+    margin-bottom: 70px; /* 70px from the bottom of the container */
     transform: translateX(-50%); /* Adjust to center it */
 }
 
@@ -40,8 +40,8 @@ button:active {
     height: 50px;
     border-radius: 50%; /* Make it round */
     position: absolute; /* Ensure it is positioned */
-    top: 20px; /* 20px from the top */
-    left: 20px; /* 20px from the left */
+    margin-top: 20px; /* 20px from the top */
+    margin-left: 20px; /* 20px from the left */
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,4 +1,3 @@
-import { c, canvas } from "../../canvas_setup.js";
 import test_object from "../public/example_object.js";
 import { main as m } from "../../main.js";
 import sky_background from "../public/sky_background.js";
