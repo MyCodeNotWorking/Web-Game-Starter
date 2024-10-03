@@ -30,7 +30,7 @@ button:active {
 #start-button {
     position: absolute;
     left: 50%; /* Center horizontally */
-    margin-bottom: 70px; /* 70px from the bottom of the container */
+    bottom: 70px; /* 70px from the bottom of the container */
     transform: translateX(-50%); /* Adjust to center it */
 }
 

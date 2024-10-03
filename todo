@@ -1,20 +1,6 @@
-- create the home menu:
-- start-button
-- title
-- background
 
-- create main game:
-- create player and bot
-- create ball with collision
-- draw net and score
-- add a scene reset
-
---
-WGS:
 test libraries, add parallax background
 remove display flex
-
-margin instead of left top
 remove absolute from button style (or should I?)
 canvas horizontally test
 move player away from public
