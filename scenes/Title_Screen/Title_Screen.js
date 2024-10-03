@@ -1,5 +1,5 @@
 import { c, canvas } from "../../canvas_setup.js";
-import test_object from "../public/example_object.js";
+import test_object from "../Main_Game/example_object.js";
 import { main as m } from "../../main.js";
 import sky_background from "../public/sky_background.js";
 import Main_Game from "../Main_Game/Main_Game.js";

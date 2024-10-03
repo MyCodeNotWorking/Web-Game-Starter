@@ -1,4 +1,4 @@
-import test_object from "../public/example_object.js";
+import test_object from "./example_object.js";
 import { main as m } from "../../main.js";
 import sky_background from "../public/sky_background.js";
 import Title_Screen from "../Title_Screen/Title_Screen.js";
