@@ -11,12 +11,8 @@
 
 --
 WGS:
-add scene reset, test libraries, add parallax background, 
-make so every object in container is positioned relative, 
-remove display flex, check if chatgpt style.css was different
-#ui-elements-container > * {
-    position: relative;
-}
+test libraries, add parallax background
+remove display flex
 
 margin instead of left top
 remove absolute from button style (or should I?)

@@ -9,9 +9,8 @@ import { c, canvas } from "./canvas_setup.js"
 
 // Resize UI-Elements container
 var ui_elements_container = document.getElementById("ui-elements-container");
+
 function resize() {
-    ui_elements_container.style.left = window.innerWidth / 2 + 'px';
-    ui_elements_container.style.top = window.innerHeight / 2 + 'px';
     ui_elements_container.style.width = canvas.getBoundingClientRect().width + 'px';    // Set the UI-Elements container width to the canvas width
     ui_elements_container.style.height = canvas.getBoundingClientRect().height + 'px';  // Set the UI-Elements container height to the canvas height
 }
