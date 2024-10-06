@@ -24,16 +24,6 @@ window.addEventListener('resize', ()=> {
 // Main game engine class
 class Main {
     constructor() {
-        // Initialize the current frame count
-        this.frame = 0;
-
-        // Define a good delta time (frame duration) for 60 FPS
-        this.delta_time = 1000 / 60; 
-
-        // Set a maximum delta time to avoid very large jumps in case of lag
-        // Here, 30 FPS is the maximum allowed slowdown
-        this.max_delta = 1000 / 30;
-
         // Set the current scene to the starting scene
         this.scene = start_scene;
 
@@ -78,22 +68,6 @@ class Main {
         c.restore(); 
     }
 
-    // Calculate the time difference (delta time) between frames
-    calculate_dt() {
-        var dt_old = performance.now();
-
-        // Use requestAnimationFrame to measure the time between frames
-        window.requestAnimationFrame(() => {
-            // Update delta_time, limiting it to max_delta to prevent big jumps
-            this.delta_time = Math.min(performance.now() - dt_old, this.max_delta);
-        });
-    }
-
-    // Increment the frame counter
-    set_frame() {
-        this.frame += 1;
-    }
-
     // Clear the entire canvas to prepare for the next frame
     clear_canvas() {
         c.clearRect(0, 0, canvas.width, canvas.height);
@@ -121,12 +95,6 @@ class Main {
     update() {
         // Clear the canvas for the next frame
         this.clear_canvas();
-
-        // Calculate the time difference (delta time) between frames
-        this.calculate_dt();
-
-        // Increment the frame count
-        this.set_frame();
 
         // Start the camera
         this.start_camera();

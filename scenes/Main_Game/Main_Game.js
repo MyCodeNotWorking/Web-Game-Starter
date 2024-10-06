@@ -1,4 +1,6 @@
-import test_object from "./example_object.js";
+// Import objects
+import example_object from "./objects/example_object.js";
+
 import { main as m } from "../../main.js";
 import sky_background from "../public/sky_background.js";
 import Title_Screen from "../Title_Screen/Title_Screen.js";
@@ -8,7 +10,7 @@ class Main_Game {
     // Constructor sets up the objects and handles any necessary event listeners for UI elements
     constructor() {
         // Array of game objects, initialized with the test_object
-        this.objects = [test_object];
+        this.objects = [example_object];
 
         // Fetching all elements with the class "home" (e.g., a home button in the UI)
         const elements = document.getElementsByClassName("home");

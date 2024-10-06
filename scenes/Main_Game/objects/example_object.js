@@ -1,6 +1,6 @@
 // Importing necessary variables and functions from external modules
-import { c, canvas } from "../../canvas_setup.js"  // c: context of the canvas, canvas: canvas element
-import { main as m } from "../../main.js"  // m: main module for game loop, contains delta_time
+import { c, canvas } from "../../../canvas_setup.js"  // c: context of the canvas, canvas: canvas element
+import dt from "../../../delta_time.js"  // dt: delta time of the game
 
 // Class to represent an example object that can move on the canvas
 class Example_Object {
@@ -14,8 +14,8 @@ class Example_Object {
 
         // Set the object's initial position to the center of the canvas
         this.position = {
-            x: canvas.width / 2,  // horizontal position
-            y: canvas.height / 2  // vertical position
+            x: canvas.width / 2 - this.size.w / 2,  // horizontal position
+            y: canvas.height / 2 - this.size.h / 2  // vertical position
         }
         
         // Define the object's speed
@@ -29,19 +29,19 @@ class Example_Object {
     controls() {
         // Move up if the 'w' key is pressed
         if (keyboard.isDown('w')) {
-            this.position.y -= this.speed * m.delta_time;  // Move up
+            this.position.y -= this.speed * dt;  // Move up
         }
         // Move down if the 's' key is pressed
         if (keyboard.isDown('s')) {
-            this.position.y += this.speed * m.delta_time;  // Move down
+            this.position.y += this.speed * dt;  // Move down
         }
         // Move right if the 'd' key is pressed
         if (keyboard.isDown('d')) {
-            this.position.x += this.speed * m.delta_time;  // Move right
+            this.position.x += this.speed * dt;  // Move right
         }
         // Move left if the 'a' key is pressed
         if (keyboard.isDown('a')) {
-            this.position.x -= this.speed * m.delta_time;  // Move left
+            this.position.x -= this.speed * dt;  // Move left
         }
     }
 
@@ -57,8 +57,8 @@ class Example_Object {
 
         // Draw the object as a rectangle on the canvas at the current position
         c.fillRect(
-            this.position.x - this.size.w / 2,  // x position (centered)
-            this.position.y - this.size.h / 2,  // y position (centered)
+            this.position.x,  // x position (centered)
+            this.position.y,  // y position (centered)
             this.size.w,  // width
             this.size.h   // height
         );
