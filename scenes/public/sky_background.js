@@ -1,5 +1,3 @@
-import { c, canvas } from "../../canvas_setup.js"
-
 export default function() {
     // Create a linear gradient from top (y=0) to bottom (y=canvas.height)
     const gradient = c.createLinearGradient(0, 0, 0, canvas.height);

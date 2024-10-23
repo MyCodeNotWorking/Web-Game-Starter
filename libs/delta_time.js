@@ -1,6 +1,5 @@
 // Define a good delta time (frame duration) for 60 FPS
 var delta_time = 1000 / 60; 
-export default delta_time;
 
 // Calculate the time difference (delta time) between frames
 function calculate_dt() {

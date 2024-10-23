@@ -1,148 +1,47 @@
-import { scaleFactor, canvasBound } from "../canvas_setup.js"
-
+// Define a touch object to track touch position and state
 var touch = {
-    x: null,
-    y: null,
-    down: false,
-    onDown: false,
-    onUp: false,
-    checkBox: function(posX, posY, width, height) {
-        if(touch.x > posX && touch.x < posX + width &&
-           touch.y > posY && touch.y < posY + height
-          ) return true
+    x: null,        // X-coordinate of the touch relative to the canvas
+    y: null,        // Y-coordinate of the touch relative to the canvas
+    active: false,  // Boolean to track if a touch is active
+
+    // Method to update the touch position based on the event's touches[0] (first touch point)
+    set_position: (e) => {
+        if (e.touches.length > 0) {
+            const touchPoint = e.touches[0];
+            touch.x = (touchPoint.clientX - canvasBound.left) * scaleFactor;
+            touch.y = (touchPoint.clientY - canvasBound.top) * scaleFactor;
+        }
     },
-    checkCir: function(posX, posY, radius) {
-        var dx = touch.x - posX;
-        var dy = touch.y - posY;
-        var distance = Math.sqrt(dx * dx + dy * dy);
-        return distance <= radius;
-    },
-    hitbox: {
-        rec: null, 
-        cir: null
+
+    // Method to update canvas boundaries on window resize
+    update_canvas_bounds: () => {
+        const canvas = document.querySelector("canvas");
+        const rect = canvas.getBoundingClientRect();
+        canvasBound.left = rect.left;
+        canvasBound.top = rect.top;
     }
-}
+};
 
-document.addEventListener("touchstart", function(e) {
-    touch.down = true
+// Event listener to update touch position when a touch moves on the screen
+document.addEventListener("touchmove", (e) => {
+    touch.set_position(e);
+    e.preventDefault(); // Prevent default touch scrolling behavior
+});
 
-    touch.onDown = true
-    requestAnimationFrame(function() {
-        touch.onDown = false
-    })
+// Event listener to track when a touch starts
+document.addEventListener("touchstart", (e) => {
+    touch.active = true;
+    touch.set_position(e); // Set the initial touch position
+    e.preventDefault(); // Prevent default touch behavior
+});
 
-    set_touch_pos(e)
-})
-document.addEventListener("touchmove", function(e) {
-    set_touch_pos(e)
-})
-document.addEventListener("touchend", function() {
-    touch.down = false 
+// Event listener to track when a touch ends
+document.addEventListener("touchend", (e) => {
+    touch.active = false;
+    e.preventDefault(); // Prevent default touch behavior
+});
 
-    touch.onUp = true
-    requestAnimationFrame(function() {
-        touch.onUp = false
-    })
-})
-
-function set_touch_pos(e) {
-    touch.x = (e.touches[0].clientX - canvasBound.left) * scaleFactor
-    touch.y = (e.touches[0].clientY - canvasBound.top) * scaleFactor
-}
-
-touch.hitbox.rec = class HitboxRec {
-    constructor(x, y, width, height) {
-        this.pos = {
-            x: x,
-            y: y
-        }
-        this.width = width
-        this.height = height
-
-        this.down = false
-        this.onDown = false
-        this.onUp = false 
-
-        this.active = true
-
-        this.update()
-    }
-    DOWN() {
-        if(touch.down && touch.checkBox(this.pos.x, this.pos.y, this.width, this.height)) {
-            this.down = true
-        } else {
-            this.down = false
-        }
-    }
-    ONDOWN() {
-        if(touch.onDown && touch.checkBox(this.pos.x, this.pos.y, this.width, this.height)) {
-            this.onDown = true
-        } else {
-            this.onDown = false
-        }
-    }
-    ONUP() {
-        if(touch.onUp && touch.checkBox(this.pos.x, this.pos.y, this.width, this.height)) {
-            this.onUp = true
-        } else {
-            this.onUp = false
-        }
-    }
-    update() {
-        if(this.active) {
-            this.DOWN()
-            this.ONDOWN()
-            this.ONUP()
-        }
-        requestAnimationFrame(()=>this.update())
-    }
-}
-
-touch.hitbox.cir = class HitboxCir {
-    constructor(x, y, radius) {
-        this.pos = {
-            x: x,
-            y: y
-        }
-        this.radius = radius
-
-        this.down = false
-        this.onDown = false
-        this.onUp = false 
-
-        this.active = true
-
-        this.update()
-    }
-    DOWN() {
-        if(touch.down && touch.checkCir(this.pos.x, this.pos.y, this.radius)) {
-            this.down = true
-        } else {
-            this.down = false
-        }
-    }
-    ONDOWN() {
-        if(touch.onDown && touch.checkCir(this.pos.x, this.pos.y, this.radius)) {
-            this.onDown = true
-        } else {
-            this.onDown = false
-        }
-    }
-    ONUP() {
-        if(touch.onUp && touch.checkCir(this.pos.x, this.pos.y, this.radius)) {
-            this.onUp = true
-        } else {
-            this.onUp = false
-        }
-    }
-    update() {
-        if(this.active) {
-            this.DOWN()
-            this.ONDOWN()
-            this.ONUP()
-        }
-        requestAnimationFrame(()=>this.update())
-    }
-}
-
-export default touch
+// Event listener to update canvas boundaries when the window is resized
+window.addEventListener("resize", () => {
+    touch.update_canvas_bounds();
+});

@@ -1,6 +1,5 @@
 // Initialize the current frame count
 var game_frame = 0;
-export default game_frame;
 
 // Increment the frame counter
 function set_frame() {

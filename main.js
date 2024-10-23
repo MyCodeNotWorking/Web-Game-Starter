@@ -4,9 +4,6 @@ import scene_name from "./scenes/Title_Screen/Title_Screen.js"
 // Set the starting scene to the imported scene
 export var start_scene = scene_name;
 
-// Import canvas
-import { c, canvas } from "./canvas_setup.js"
-
 // Resize UI-Elements container
 var ui_elements_container = document.getElementById("ui-elements-container");
 

@@ -20,6 +20,8 @@ html, body {
   transform: translate(-50%, -50%);
   border: 2px solid black;
   max-width: 100%;
+  color: white;
+  font-size: 24px;
 }
 
 @media (min-width: 721px) {
@@ -52,6 +54,7 @@ html, body {
 .hidden {
   display: none !important;
 }
+
 
 
 

@@ -1,7 +1,3 @@
-// Importing necessary variables and functions from external modules
-import { c, canvas } from "../../../canvas_setup.js"  // c: context of the canvas, canvas: canvas element
-import dt from "../../../delta_time.js"  // dt: delta time of the game
-
 // Class to represent an example object that can move on the canvas
 class Example_Object {
     // Constructor initializes object properties like size, position, speed, and color
@@ -10,6 +6,12 @@ class Example_Object {
         this.size = {
             w: 70,  // width
             h: 70   // height
+        }
+
+        // Set the object's velocity
+        this.velocity = {
+            x: 0, // horizontal velocity
+            y: 0 // vertical velocity
         }
 
         // Set the object's initial position to the center of the canvas
@@ -25,29 +27,37 @@ class Example_Object {
         this.color = 'red';  // Color of the object
     }
 
-    // Method to handle controls and update position based on keyboard input
-    controls() {
-        // Move up if the 'w' key is pressed
+    // Method to handle controls and update velocity based on keyboard input
+    set_velocity() {
+        // Reset velocity to 0 by default
+        this.velocity.x = 0;
+        this.velocity.y = 0;
+    
+        // Move vertically
         if (keyboard.isDown('w')) {
-            this.position.y -= this.speed * dt;  // Move up
+            this.velocity.y = -this.speed * delta_time;  // Move up
+        } else if (keyboard.isDown('s')) {
+            this.velocity.y = this.speed * delta_time;   // Move down
         }
-        // Move down if the 's' key is pressed
-        if (keyboard.isDown('s')) {
-            this.position.y += this.speed * dt;  // Move down
-        }
-        // Move right if the 'd' key is pressed
+    
+        // Move horizontally
         if (keyboard.isDown('d')) {
-            this.position.x += this.speed * dt;  // Move right
+            this.velocity.x = this.speed * delta_time;   // Move right
+        } else if (keyboard.isDown('a')) {
+            this.velocity.x = -this.speed * delta_time;  // Move left
         }
-        // Move left if the 'a' key is pressed
-        if (keyboard.isDown('a')) {
-            this.position.x -= this.speed * dt;  // Move left
-        }
+    }    
+
+    // Move method moves the object by it's current velocity
+    move() {
+        this.position.x += this.velocity.x;
+        this.position.y += this.velocity.y;
     }
 
     // Update method to control the object's behavior on each frame
     update() {
-        this.controls();  // Call controls to update position based on input
+        this.set_velocity();  // Call set_velocity to update velocity based on input
+        this.move();  // Call move to update this object's position    
     }
 
     // Method to draw the object on the canvas

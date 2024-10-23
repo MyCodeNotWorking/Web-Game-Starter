@@ -45,7 +45,10 @@
 
 
   <div id="game-container">
-    <canvas id="canvas" width="720" height="1280"></canvas>
+    <canvas id="canvas" width="960" height="1440">
+      Your browser doesn't support the HTML5 canvas.<br>
+      Try to update your browser or switch to a different browser.
+    </canvas>
 
     <div id="ui-elements-container">
 
@@ -65,9 +68,15 @@
   <div id="loading">Loading ...</div>
 
   <!-- import libs -->
+  <script src="./libs/canvas_setup.js"></script>
+  <script src="./libs/touch.js"></script>
+  <script src="./libs/mouse.js"></script>
+  <script src="./libs/SAT.js"></script>
+  <script src="./libs/CCD.js"></script>
   <script src="./libs/keyboard.js"></script>
   <script src="./libs/random.js"></script>
-  <script src="./libs/touch.js" type="module"></script>
+  <script src="./libs/frame_counter.js"></script>
+  <script src="./libs/delta_time.js"></script>
    
   <script src="./main.js" type="module"></script>
   
