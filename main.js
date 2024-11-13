@@ -33,6 +33,16 @@ class Main {
             rotation: 0, // Rotation of the camera
             zoom: 1 // Zoom, 1 = 100%;
         };
+
+        this.run = true;
+
+        this.debug = {
+            frame_counter: false,
+            delta_time: false,
+            mouse: false,
+            touch: false,
+            fps: false
+        };
     }
 
     // Method that starts the camera transform
