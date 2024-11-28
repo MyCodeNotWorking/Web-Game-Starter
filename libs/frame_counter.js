@@ -3,7 +3,7 @@ var game_frame = 0;
 
 // Increment the frame counter
 function set_frame() {
-    this.frame += 1;
+    game_frame += 1;
 
     window.requestAnimationFrame(set_frame);
 }

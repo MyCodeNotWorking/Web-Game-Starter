@@ -35,13 +35,16 @@ class Main {
         };
 
         this.run = true;
+        this.game_speed = 1.0; //add a seperate library to fix circular dependency or add every standart lib to this object main
 
+        this.debug_speed = 60.0;
         this.debug = {
-            frame_counter: false,
-            delta_time: false,
-            mouse: false,
-            touch: false,
-            fps: false
+            game_speed: document.getElementById("game-speed"),
+            frame_counter: document.getElementById("frame-counter"),
+            delta_time: document.getElementById("delta-time"),
+            mouse: document.getElementById("mouse"),
+            touch: document.getElementById("touch"),
+            fps: document.getElementById("fps")
         };
     }
 
@@ -98,6 +101,17 @@ class Main {
         }
     }
 
+    update_debugging() {
+        if (game_frame % this.debug_speed === 0) {
+            this.debug.game_speed.innerHTML = `<strong>game-speed:</strong> ${this.game_speed}`;
+            this.debug.frame_counter.innerHTML = `<strong>frame-counter:</strong> ${game_frame}`;
+            this.debug.delta_time.innerHTML = `<strong>delta-time:</strong> ${delta_time}ms`;
+            this.debug.mouse.innerHTML = `<strong>mouse:</strong> x: ${mouse.x.toFixed(3)} y: ${mouse.y.toFixed(3)} down: ${mouse.down}`;
+            this.debug.touch.innerHTML = `<strong>touch:</strong> x: ${touch.x.toFixed(3)} y: ${touch.y.toFixed(3)} active: ${touch.active}`;
+            this.debug.fps.innerHTML = `<strong>fps:</strong> ${fps.toFixed(3)}`
+        }
+    }
+
     // Main update method, called once per frame
     update() {
         // Clear the canvas for the next frame
@@ -117,6 +131,8 @@ class Main {
 
         // End the camera after using it on objects
         this.end_camera();
+
+        this.update_debugging();
     }
 
     // A method to switch the scene to a specific scene

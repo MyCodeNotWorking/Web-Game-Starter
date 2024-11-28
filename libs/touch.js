@@ -1,7 +1,7 @@
 // Define a touch object to track touch position and state
 var touch = {
-    x: null,        // X-coordinate of the touch relative to the canvas
-    y: null,        // Y-coordinate of the touch relative to the canvas
+    x: 0,        // X-coordinate of the touch relative to the canvas
+    y: 0,        // Y-coordinate of the touch relative to the canvas
     active: false,  // Boolean to track if a touch is active
 
     // Method to update the touch position based on the event's touches[0] (first touch point)

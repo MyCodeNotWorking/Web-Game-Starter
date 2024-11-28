@@ -1,8 +1,8 @@
 // Define a mouse object to track mouse position and whether the mouse button is pressed
 var mouse = {
-    x: null,       // X-coordinate of the mouse relative to the canvas
-    y: null,       // Y-coordinate of the mouse relative to the canvas
-    down: null,    // Boolean to track if the mouse button is pressed
+    x: 0,       // X-coordinate of the mouse relative to the canvas
+    y: 0,       // Y-coordinate of the mouse relative to the canvas
+    down: false,    // Boolean to track if the mouse button is pressed
 
     // Method to update the mouse position based on the event's clientX and clientY
     set_position: (e) => {
