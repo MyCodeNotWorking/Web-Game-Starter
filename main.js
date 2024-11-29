@@ -122,6 +122,9 @@ class Main {
 
         // Call the 'update', 'background', and 'draw' methods on all objects in the scene
         this.call_method_on_object_and_children('update', this.scene);    // Update object states (e.g., physics)
+        this.call_method_on_object_and_children('update_hitbox', this.scene);
+        this.call_method_on_object_and_children('physics', this.scene);
+        this.call_method_on_object_and_children('controls', this.scene); //put this code in a function to make it more readable
         this.call_method_on_object_and_children('background', this.scene); // Draw the background layer (if any)
 
         // Call the camera set method. This method has to be placed after the loop on background, so that it's not affected by the camera
