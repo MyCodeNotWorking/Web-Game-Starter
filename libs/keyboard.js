@@ -1,76 +1,67 @@
-//keyboard.js
-var keyboard = {
-  init: function() {
-    document.addEventListener("keydown", (e) => {
-      this.addKey(e.key, this.keys)
-
-      if(!e.repeat) {
-        this.addKey(e.key, this.on.down_keys)
-        requestAnimationFrame(() => {
-          this.removeKey(e.key, this.on.down_keys)
-        })
-      }
-    })
-    document.addEventListener("keyup", (e) => {
-      this.removeKey(e.key, this.keys)
-
-      this.addKey(e.key, this.on.up_keys)
-      requestAnimationFrame(() => {
-          this.removeKey(e.key, this.on.up_keys)
-      })
-    })
-  },
-  keys: [],
-  on: {
+const keyboard = (() => {
+  // Private variables and methods
+  const keys = [];
+  const on = {
     down_keys: [],
-    up_keys:[]
-  },
-  isDown: function(key) {
-    for(var i = 0; i < this.keys.length; i ++) {
-      if(this.keys[i] == key) {
-        return true
-      } else {
-        return false
-      }
+    up_keys: []
+  };
+
+  // Private method to add a key to an array
+  function addKey(key, array) {
+    if (!array.includes(key)) {
+      array.push(key);
     }
-  },
-  addKey(key, array) {
-    for(var i = 0; i < array.length; i ++) {
-      if(array[i] == key) {
-        return
-      }
-    }
-    array.push(key)
-  },
-  removeKey(key, array) {
-    for(var i = 0; i < array.length; i ++) {
-      if(array[i] == key) {
-        array.splice(i, 1)
-        return
-      }
-    }
-    console.log("the requested key was not found in the array")
-  },
-  onDown(key) {
-    for(var i = 0; i < this.on.down_keys.length; i ++) {
-      if(this.on.down_keys[i] == key) {
-        return true
-      } else {
-        return false
-      }
-    }
-  },
-  onUp(key) {
-    for(var i = 0; i < this.on.up_keys.length; i ++) {
-      if(this.on.up_keys[i] == key) {
-        return true
-      } else {
-        return false
-      }
-    }
-  },
-  loop_keys(array) {
-    //...
   }
-}
-keyboard.init()
+
+  // Private method to remove a key from an array
+  function removeKey(key, array) {
+    const index = array.indexOf(key);
+    if (index !== -1) {
+      array.splice(index, 1);
+    } else {
+      console.warn(`Key "${key}" not found in the array`);
+    }
+  }
+
+  // Set up event listeners
+  function init() {
+    document.addEventListener("keydown", (e) => {
+      addKey(e.key, keys); // Add the pressed key to the keys array
+
+      if (!e.repeat) {
+        addKey(e.key, on.down_keys); // Add the key to down_keys if not repeated
+        requestAnimationFrame(() => removeKey(e.key, on.down_keys)); // Remove key after next repaint
+      }
+    });
+
+    document.addEventListener("keyup", (e) => {
+      removeKey(e.key, keys); // Remove the released key from the keys array
+
+      addKey(e.key, on.up_keys); // Add the key to up_keys
+      requestAnimationFrame(() => removeKey(e.key, on.up_keys)); // Remove key after next repaint
+    });
+  }
+
+  // Public API
+  return {
+    init, // Publicly expose the init method
+
+    // Check if a specific key is currently pressed
+    isDown(key) {
+      return keys.includes(key);
+    },
+
+    // Check if a specific key was pressed down in the current frame
+    onDown(key) {
+      return on.down_keys.includes(key);
+    },
+
+    // Check if a specific key was released up in the current frame
+    onUp(key) {
+      return on.up_keys.includes(key);
+    }
+  };
+})();
+
+// Initialize the keyboard object to start listening to key events
+keyboard.init();
