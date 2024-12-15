@@ -150,6 +150,25 @@ class Main {
         // Set the new scene as the current scene
         this.scene = new_scene_name;
     }
+
+    // Default background for an object
+    default_background() {
+        // Set background color to grey
+        c.fillStyle = '#808080';  // Grey color
+        c.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Set grid color to a darker grey
+        c.strokeStyle = '#666666';  // Darker grey for grid
+        c.lineWidth = 0.5;
+
+        // Draw grid
+        const gridSize = 50;  // Size of grid squares
+        for (let x = 0; x < canvas.width; x += gridSize) {
+            for (let y = 0; y < canvas.height; y += gridSize) {
+                c.strokeRect(x, y, gridSize, gridSize);
+            }
+        }
+    }
 }
 
 // Instantiate the main game engine
