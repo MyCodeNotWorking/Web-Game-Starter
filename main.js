@@ -103,7 +103,7 @@ class Main {
         // Update debugging info at a specified interval
         if (frameCounter.getFrameCount() % this.debug_speed === 0) {
             this.debug.game_speed.innerHTML = `<strong>game-speed:</strong> ${this.game_speed}`;
-            this.debug.frame_counter.innerHTML = `<strong>frame-counter:</strong> ${frameCounter.getFrameCount}`;
+            this.debug.frame_counter.innerHTML = `<strong>frame-counter:</strong> ${frameCounter.getFrameCount()}`;
             this.debug.delta_time.innerHTML = `<strong>delta-time:</strong> ${delta_time}ms`;
             this.debug.mouse.innerHTML = `<strong>mouse:</strong> x: ${mouse.x.toFixed(3)} y: ${mouse.y.toFixed(3)} down: ${mouse.down}`;
             this.debug.touch.innerHTML = `<strong>touch:</strong> x: ${touch.x.toFixed(3)} y: ${touch.y.toFixed(3)} active: ${touch.active}`;
