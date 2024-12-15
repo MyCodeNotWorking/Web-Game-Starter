@@ -35,16 +35,16 @@ class Example_Object {
     
         // Move vertically
         if (keyboard.isDown('w')) {
-            this.velocity.y = -this.speed * delta_time;  // Move up
+            this.velocity.y = -this.speed * FrameRate.deltaTime;  // Move up
         } else if (keyboard.isDown('s')) {
-            this.velocity.y = this.speed * delta_time;   // Move down
+            this.velocity.y = this.speed * FrameRate.deltaTime;   // Move down
         }
     
         // Move horizontally
         if (keyboard.isDown('d')) {
-            this.velocity.x = this.speed * delta_time;   // Move right
+            this.velocity.x = this.speed * FrameRate.deltaTime;   // Move right
         } else if (keyboard.isDown('a')) {
-            this.velocity.x = -this.speed * delta_time;  // Move left
+            this.velocity.x = -this.speed * FrameRate.deltaTime;  // Move left
         }
     }    
 

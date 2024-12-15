@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Main game loop
     function main_loop() {
-        main.update(); // Run the game update logic
+        if (FrameRate.frameCount % main.game_speed === 0) main.update(); // Run the game update logic
         window.requestAnimationFrame(main_loop); // Request the next frame
     }
 
