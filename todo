@@ -1,2 +1,18 @@
-ability to refresh delta time at the time the programmer wants
-change touch to down not active, add on up on down
+WGS-library build:
+- use webpack for bundling
+- lib should look sth like this: new WGS_Project({ canvas.height, style, layout responsive etc.
+
+WGS-standart build ideas:
+- add a this.ridgidbody
+- add library noise.js
+- import delta in main to fix circular dependency?
+- add mouse move property in mouse.js
+- root objects instead of scenes
+- paralex background
+
+WGS-standart build:
+- redo example object and template object with a satJS hitbox
+- add comments
+
+! important !:
+- keyboard.js is dumb on a low frame_rate
