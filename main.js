@@ -6,8 +6,6 @@ export var start_scene = scene_name;
 
 // Resize UI-Elements container to match the canvas dimensions
 var ui_elements_container = document.getElementById("ui-elements-container");
-const canvas = document.getElementById("canvas");
-const c = canvas.getContext("2d");
 
 // Function to make the canvas responsive
 function responsive_canvas() {
