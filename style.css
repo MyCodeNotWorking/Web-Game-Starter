@@ -22,12 +22,8 @@ html, body {
   max-width: 100%;
   color: white;
   font-size: 24px;
-}
-
-@media (min-width: 721px) {
-  #canvas {
-    height: 100vh;
-  }
+  height: 100vh;
+  max-width: 100%;
 }
 
 #ui-elements-container {

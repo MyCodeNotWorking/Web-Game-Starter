@@ -7,17 +7,25 @@ export var start_scene = scene_name;
 // Resize UI-Elements container to match the canvas dimensions
 var ui_elements_container = document.getElementById("ui-elements-container");
 
-function resize() {
-    // Dynamically set the width and height of the UI container to match the canvas
-    ui_elements_container.style.width = canvas.getBoundingClientRect().width + 'px';
-    ui_elements_container.style.height = canvas.getBoundingClientRect().height + 'px';
-}
-resize();
+function responsive_canvas() {
+    const aspectRatio = canvas.width / canvas.height; // Maintain the original aspect ratio
+    const containerWidth = window.innerWidth;
+    const containerHeight = window.innerHeight;
 
-// Adjust UI container size on window resize
-window.addEventListener('resize', () => {
-    resize();
-});
+    if (containerWidth / containerHeight < aspectRatio) {
+        canvas.style.width = containerWidth + 'px';
+        canvas.style.height = (containerWidth / aspectRatio) + 'px';
+    } else {
+        canvas.style.width = (containerHeight * aspectRatio) + 'px';
+        canvas.style.height = containerHeight + 'px';
+    }
+
+    // Update UI container to match canvas size
+    ui_elements_container.style.width = canvas.style.width;
+    ui_elements_container.style.height = canvas.style.height;
+
+    console.log("Canvas resized to:", canvas.style.width, canvas.style.height);
+}
 
 // Main game engine class
 class Main {
@@ -176,6 +184,12 @@ export var main = new Main();
 
 // Start the game loop once the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
+    responsive_canvas();
+    // Adjust UI container size on window resize
+    window.addEventListener('resize', () => {
+        responsive_canvas();
+    });
+
     // Remove the loading screen once assets are loaded
     document.getElementById("loading").style.display = "none";
 
